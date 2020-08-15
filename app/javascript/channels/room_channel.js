@@ -2,6 +2,7 @@ import consumer from "./consumer"
 
 document.addEventListener('turbolinks:load', () => {
   const element = document.getElementById('room-id')
+  if (!element){ return}
   const roomId = element.dataset.roomId
   consumer.subscriptions.create({channel: "RoomChannel", room_id: roomId}, {
     connected() {

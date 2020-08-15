@@ -1,0 +1,5 @@
+<div class="px-16 py-8">
+  <% @rooms.each do |room| %>
+    <p><%= link_to "Room #{room}", room_path(room) %></p>
+  <% end %>
+</div>
