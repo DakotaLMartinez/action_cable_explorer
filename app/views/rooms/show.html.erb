@@ -1,5 +1,5 @@
 <div class="px-16 py-8">
-  <h2 class="text-xl semibold">Room #<%= @room_id %></h2>
+  <h2 class="text-xl semibold"><%= @room.name %></h2>
   <% if !session[:chat_name] %>
     
     <%= form_tag( '/chat_names' , method: :post, remote: true) do |f| %>
@@ -11,6 +11,6 @@
     <% end %>
       
   <% end %>
-  <div id="room-id" data-room-id="<%= @room_id %>">
+  <div id="room-id" data-room-id="<%= @room.id %>">
   </div>
 </div>

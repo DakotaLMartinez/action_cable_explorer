@@ -1,10 +1,10 @@
 class RoomsController < ApplicationController
   def index 
-    @rooms = [1,2,3,4]
+    @rooms = Room.all
   end
 
   def show
-    @room_id = params[:room_id]
+    @room = Room.find_by_id(params[:id])
   end
 
   def save_name
