@@ -1,5 +1,16 @@
 <div class="px-16 py-8">
   <h2 class="text-xl semibold">Room #<%= @room_id %></h2>
+  <% if !session[:chat_name] %>
+    
+    <%= form_tag( '/chat_names' , method: :post, remote: true) do |f| %>
+      <%= text_field_tag(:chat_name, nil, {
+        placeholder: "Enter your name to start chatting",
+        class: "w-64 px-5 py-2 border-solid border-2 border-gray-600"
+      }) %>
+      <%= submit_tag "Save Name", class: "mt-2 w-64 px-5 border-2 border-gray-800 py-2 bg-blue-400 text-yellow-300" %>
+    <% end %>
+      
+  <% end %>
   <div id="room-id" data-room-id="<%= @room_id %>">
   </div>
 </div>

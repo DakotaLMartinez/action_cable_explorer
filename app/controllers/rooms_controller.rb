@@ -7,4 +7,8 @@ class RoomsController < ApplicationController
     @room_id = params[:room_id]
   end
 
+  def save_name
+    session[:chat_name] = params[:chat_name]
+  end
+
 end
