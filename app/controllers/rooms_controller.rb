@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
 
   def save_name
     session[:chat_name] = params[:chat_name]
+    redirect_to request.referrer
   end
 
 end

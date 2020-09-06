@@ -1,5 +1,24 @@
 <div class="px-16 py-8">
   <h2 class="text-xl semibold"><%= @room.name %></h2>
+  <div 
+    id="room-id" 
+    data-room-id="<%= @room.id %>"
+    class="h-96 border-2 border-solid border-gray-300 px-3"
+  >
+    <% @room.messages.each do |message| %>
+      <div class="clearfix my-2">
+        <% if message.author == session[:chat_name] %>
+          <p class="rounded px-2 float-right bg-blue-600 text-white">
+            <%= message.content %>
+          </p>
+        <% else %>
+          <p class="rounded px-2 float-left bg-gray-400 text-gray-800">
+            <%= message.content %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
   <% if !session[:chat_name] %>
     
     <%= form_tag( '/chat_names' , method: :post, remote: true) do |f| %>
@@ -10,7 +29,16 @@
       <%= submit_tag "Save Name", class: "mt-2 w-64 px-5 border-2 border-gray-800 py-2 bg-blue-400 text-yellow-300" %>
     <% end %>
       
+  <% else %>
+    <%= form_for( [@room,Message.new] , remote: true) do |f| %>
+      <p class="measure">
+        <%= f.text_field :content, 
+          class: 'mt-2 w-full px-5 py-2 border-solid border-2 border-gray-600',
+          placeholder: 'Your message'
+        %>
+        <%= f.hidden_field :author, value: session[:chat_name] %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+      </p>
+    <% end %>
   <% end %>
-  <div id="room-id" data-room-id="<%= @room.id %>">
-  </div>
 </div>
