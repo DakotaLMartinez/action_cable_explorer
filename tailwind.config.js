@@ -1,6 +1,11 @@
 module.exports = {
   theme: {
-    extend: {}
+    extend: {
+      spacing: {
+        '96': '24rem',
+        '128': '32rem',
+      }
+    }
   },
   variants: {},
   plugins: []
