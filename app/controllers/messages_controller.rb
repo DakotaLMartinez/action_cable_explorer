@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
         author: @message.author,
         content: @message.content
       )
-      redirect_to room_path(@message.room)
+      # redirect_to room_path(@message.room)
     else
       render 
     end

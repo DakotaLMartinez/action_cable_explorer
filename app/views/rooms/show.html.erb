@@ -3,6 +3,7 @@
   <div 
     id="room-id" 
     data-room-id="<%= @room.id %>"
+    data-chat-name="<%=session[:chat_name] %>"
     class="h-96 border-2 border-solid border-gray-300 px-3 overflow-y-scroll"
   >
     <% @room.messages.each do |message| %>
