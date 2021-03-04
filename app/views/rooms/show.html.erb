@@ -3,18 +3,23 @@
   <div 
     id="room-id" 
     data-room-id="<%= @room.id %>"
-    class="h-96 border-2 border-solid border-gray-300 px-3"
+    class="h-96 border-2 border-solid border-gray-300 px-3 overflow-y-scroll"
   >
     <% @room.messages.each do |message| %>
       <div class="clearfix my-2">
         <% if message.author == session[:chat_name] %>
-          <p class="rounded px-2 float-right bg-blue-600 text-white">
-            <%= message.content %>
-          </p>
+          <div class="float-right">
+            <p class="rounded px-2 bg-blue-600 text-white">
+              <%= message.content %>
+            </p>
+          </div>
         <% else %>
-          <p class="rounded px-2 float-left bg-gray-400 text-gray-800">
-            <%= message.content %>
-          </p>
+          <div class="float-left">
+            <div><%= message.author %></div>
+            <p class="rounded px-2 bg-gray-400 text-gray-800">
+              <%= message.content %>
+            </p>
+          </div>
         <% end %>
       </div>
     <% end %>
